@@ -1,14 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @list.title %>
+  
+  <h1><%= @list.title %></h1>
+	<small> <%= @list.items.where(completed: true).count%> of <%= @list.items.count %></small>
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
 </p>
 
 <p>
-  <strong>Content:</strong>
-  <%= @list.content %>
+	<small>  <%= @list.content %></small>
 </p>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+
+<%= render @list.items %> 
+
+<%= render "items/form" %>
+
+
