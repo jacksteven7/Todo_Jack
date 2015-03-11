@@ -1,11 +1,11 @@
 <p>
 <% if item.completed %>
-	<strike><%= check_box_tag :completed , "completed" , true  %>
-		<%= item.description %>
+	<strike><%= link_to "X", list_item_complete_path(@list,item.id), method: :patch %>
+		<%= item.description %> 
 	</strike>
 <% else %>
-	<%= check_box_tag :completed , "completed" , false  %>
+	<%= link_to "✓", list_item_complete_path(@list,item.id), method: :patch %>
 	<%= item.description %>
 <% end %>
-
+<%= link_to "Delete", list_item_path(@list,item.id), :method => :delete, data: { confirm: "Are you sure" } %>
 <p/>
